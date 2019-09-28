@@ -16,6 +16,7 @@ function mutation (population)
     return population
 
 --function crossover (pop)
+    
 --function selection (pop)
 
 --TODO Tie to FCEUX
