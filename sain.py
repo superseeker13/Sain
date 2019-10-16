@@ -11,6 +11,12 @@ parser.add_argument("--history", action="store_true", help="output previous perf
 learning_rate = 1e-3
 batch_size = 64
 
+#Memory addresses one byte values
+distance = 0x00
+dpad_input = 0x08 
+lives = 0x3F
+
+#From keras docs visalization example
 def showHistory() -> void:
     history = model.fit(x, y, validation_split=0.25, epochs=50, batch_size=16)
 
