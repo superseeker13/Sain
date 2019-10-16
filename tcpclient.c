@@ -42,9 +42,9 @@ int main(int argc, char const *argv[])
 	}
 
 	// Address must be a standard IPV4 
-	char *address = ? addressstr : "127.0.0.1";
+	char *address = arguments.addressstr ? arguments.addressstr : "127.0.0.1";
 	// Port <= 6000
-	int port = ? arguments.port : 5000 ;
+	int port = arguments.port > 0 ? arguments.port : 5000 ;
 
 	//AF_INET IPV4 domain const
 	//SOCK_STREAM TCP constant
