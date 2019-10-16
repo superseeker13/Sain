@@ -6,6 +6,7 @@
 #include <string.h> 
 #include <sys/socket.h>
 
+#define MAX = 255 //Read write buffer size
 #define ERROR = -1
 
 struct arguments
@@ -53,6 +54,21 @@ int main(int argc, char const *argv[])
 	// optional int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen);
 	bind(sockfd, (struct sockaddr *) ADDRESS, sizeof(ADDRESS));
 	connect(sockfd, (struct sockaddr *) ADDRESS, sizeof(ADDRESS));
+	
+	for (int n = 0, char buff[MAX]; strncmp(buff, "exit", 4)) != 0; n = 0) { 
+		//Null buffer
+		bzero(buff, sizeof(buff)); 
+		// For testing
+		//printf("Enter the string : ");
+		while ((buff[n++] = getchar()) != '\n'); 
+		write(sockfd, buff, sizeof(buff));
+		//Clean buffer before read
+		bzero(buff, sizeof(buff)); 
+		read(sockfd, buff, sizeof(buff)); 
+		printf("From Server : %s", buff); 
+	} 
+	sockfd.close();
+	
 	return 0;
 }
 
