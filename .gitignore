@@ -1,3 +1,8 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
 # Compiled Lua sources
 luac.out
 
@@ -39,6 +44,7 @@ luac.out
 *.x86_64
 *.hex
 
+<<<<<<< HEAD
 # Distribution / packaging
 .Python
 build/
@@ -62,3 +68,19 @@ ipython_config.py
 
 # Nes ROMS
 *.nes
+=======
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+>>>>>>> master

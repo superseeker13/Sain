@@ -1,3 +1,6 @@
+/**
+* @author Edward Conn
+*/
 #include <argp.h>
 #include <stdlib.h>
 #include <stdio.h>

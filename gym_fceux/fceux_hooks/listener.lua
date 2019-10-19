@@ -15,6 +15,51 @@ local ip, port = server:getsockname()
 -- print a message informing what's up
 print("Connected on port " .. port)
 
+--From https://github.com/spiiin/fceux_luaserver
+methodsNoArgs = {
+  ["emu.poweron"] = emu.poweron,
+  ["emu.pause"]   = emu.pause,
+  ["emu.unpause"] = emu.unpause,
+  ["emu.message"] = emu.message,
+  ["emu.softreset"] = emu.softreset,
+  ["emu.speedmode"] = emu.speedmode,
+  ["emu.framecount"] = emu.framecount,
+  ["emu.lagcount"] = emu.lagcount,
+  ["emu.lagged"] = emu.lagged,
+  ["emu.setlagflag"] = emu.setlagflag,
+  ["emu.paused"] = emu.paused,
+  ["emu.emulating"] = emu.emulating,
+  ["emu.readonly"] = emu.readonly,
+  ["emu.setreadonly"] = emu.setreadonly,
+  ["emu.getdir"] = emu.getdir,
+  ["emu.loadrom"] = emu.loadrom,
+  ["emu.registerafter"] = emu_registerafter,
+  ["emu.registerbefore"] = emu_registerbefore,
+  ["emu.print"] = emu.print,
+  
+  ["rom.readbyte"] = rom.readbyte,
+  ["rom.readbytesigned"] = rom.readbytesigned,
+  ["rom.writebyte"] = rom.writebyte,
+  
+  ["memory.readbyte"] = memory.readbyte,
+  ["memory.readbytesigned"] = memory.readbytesigned,
+  ["memory.readword"] = memory.readword,
+  ["memory.readwordsigned"] = memory.readwordsigned,
+  ["memory.writebyte"] = memory.writebyte,
+  ["memory.registerexecute"] = memory_registerexecute,
+  ["memory.registerwrite"] = memory_registerwrite,
+  ["memory.getregister"] = memory.getregister,
+  ["memory.setregister"] = memory.setregister,
+  
+  ["joypad.read"] = joypad.read,
+  ["joypad.readimmediate"] = joypad.readimmediate,
+  ["joypad.readdown"] = joypad.readdown,
+  ["joypad.readup"] = joypad.readup,
+  ["joypad.write"] = joypad.write,
+    
+  ["input.read"] = input.read,
+}
+
 --Start emulators
 emu.speedmode("normal")
 while true do
