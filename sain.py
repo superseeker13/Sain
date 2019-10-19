@@ -17,7 +17,7 @@ dpad_input = 0x08
 lives = 0x3F
 
 #From keras docs visalization example
-def showHistory() -> void:
+def showHistory():
     history = model.fit(x, y, validation_split=0.25, epochs=50, batch_size=16)
 
     # Plot training & validation accuracy values

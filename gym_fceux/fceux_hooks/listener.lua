@@ -1,18 +1,23 @@
+-- Launch from command line with fceux -lua listener.lua
+
 require "builtins.scripts.socket"
 local socket = require("socket")
+
 -- load namespace
 local socket = require("socket")
+
 -- create a TCP socket and bind it to the local host, at py client
 local server = assert(socket.bind("*", 0))
+
 -- select port 
 local ip, port = server:getsockname()
+
 -- print a message informing what's up
 print("Connected on port " .. port)
 
 --Start emulators
 emu.speedmode("normal")
 while true do
-    -- Execute instructions for FCEUX
 
     -- wait for a connection from any client
     local client = server:accept()
@@ -21,6 +26,8 @@ while true do
     -- receive the line
     local line, err = client:receive()
     -- if there was no error, send response
+
+    -- Execute instructions from packet
 
     client:close()
 
