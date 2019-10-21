@@ -1,7 +1,7 @@
 # Sain
 Open AI gym enviorment for Nintaco
 
-##Building
+Building
 ```
 python3 -m py_compile "sain.py"
 ```
