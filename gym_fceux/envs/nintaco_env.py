@@ -2,7 +2,7 @@ import gym
 from gym import error, spaces, utils
 from gym.utils import seeding
 
-class FceuxEnv(gym.Env):
+class NintacoEnv(gym.Env):
   metadata = {'render.modes': ['human']}
 
   def __init__(self):
