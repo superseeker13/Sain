@@ -1,4 +1,5 @@
 import argparse
+import neat
 from matplotlib import pyplot as plt
 
 parser = argparse.ArgumentParser(description="Nes bot")
@@ -11,29 +12,22 @@ parser.add_argument("--history", action="store_true", help="output previous perf
 learning_rate = 1e-3
 batch_size = 64
 
-#Memory addresses one byte values
+# Memory addresses one byte values
 distance = 0x00
 dpad_input = 0x08 
 lives = 0x3F
 
-#From keras docs visalization example
-def showHistory():
-    history = model.fit(x, y, validation_split=0.25, epochs=50, batch_size=16)
+def run():
+    # Load configuration.
+    config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
+                         neat.DefaultSpeciesSet, neat.DefaultStagnation,
+                         config_file)
 
-    # Plot training & validation accuracy values
-    plt.plot(history.history['acc'])
-    plt.plot(history.history['val_acc'])
-    plt.title('Model accuracy')
-    plt.ylabel('Accuracy')
-    plt.xlabel('Epoch')
-    plt.legend(['Train', 'Test'], loc='upper left')
-    plt.show()
+    # Create the population, which is the top-level object for a NEAT run.
+    p = neat.Population(config)
 
-    # Plot training & validation loss values
-    plt.plot(history.history['loss'])
-    plt.plot(history.history['val_loss'])
-    plt.title('Model loss')
-    plt.ylabel('Loss')
-    plt.xlabel('Epoch')
-    plt.legend(['Train', 'Test'], loc='upper left')
-    plt.show()
+    # Add a stdout reporter to show progress in the terminal.
+    p.add_reporter(neat.StdOutReporter(True))
+    stats = neat.StatisticsReporter()
+    p.add_reporter(stats)
+    p.add_reporter(neat.Checkpointer(5))
